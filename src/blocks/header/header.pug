@@ -1,0 +1,51 @@
+header.header
+    .container.header__container
+
+        nav.header__nav.header-nav
+            ul.header-nav__list
+                li.header-nav__item
+                    a.header-nav__link(href='#about') О нас
+                li.header-nav__item
+                    a.header-nav__link(href='#meetings') Предстоящие встречи
+
+                li.header-nav__logo
+                    a.header__logo(href='./' data-da=".header__container, 960, 0")
+                        img(src="./assets/img/logo.png")
+
+                li.header-nav__item
+                    a.header-nav__link(href='#past-meetings') Отчет встреч
+                li.header-nav__item
+                    a.header-nav__link(href='#footer') Контакты
+
+
+        button(type="button").header__burger
+            span
+            span
+            span
+
+
+        nav.header__nav-scroll.nav-scroll
+
+            button.nav-scroll__close &#x2715;
+            ul.nav-scroll__list
+                li
+                    a(href="#about") / О нас
+                li
+                    a(href="#meetings") / Предстоящие встречи
+                li
+                    a(href="#past-meetings") / Отчет встреч
+                li
+                    a(href="#footer") / Контакты
+
+            ul.nav-scroll__social
+                li
+                    a(href="##" target="_blank")
+                        img(src="./assets/img/icons/social/whatsapp.svg")
+                li
+                    a(href="##" target="_blank")
+                        img(src="./assets/img/icons/social/instagram.svg")
+                li
+                    a(href="##" target="_blank")
+                        img(src="./assets/img/icons/social/email.svg")
+
+        .bg-overlay

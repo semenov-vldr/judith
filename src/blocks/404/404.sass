@@ -1,0 +1,21 @@
+.page-404
+
+  &__container
+    @include fontSize(20, 32)
+    text-align: center
+    flex-direction: column
+    @extend .flex-center
+    min-height: 100vh
+
+  &__main
+    width: 50vw
+    margin-bottom: 72px
+    @media (max-width: $width-tablet)
+      width: 70vw
+      margin-bottom: 56px
+    @media (max-width: $width-mobile)
+      width: 80vw
+      margin-bottom: 40px
+
+  a
+    text-decoration: underline

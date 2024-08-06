@@ -1,0 +1,40 @@
+@mixin font-face($font-name, $font-name-weight, $weight: 400, $style: normal)
+  @font-face
+    font-family: $font-name
+    src: url("../fonts/#{$font-name}/#{$font-name}-#{$font-name-weight}.woff2") format('woff2'), url("../fonts/#{$font-name}/#{$font-name}-#{$font-name-weight}.woff") format('woff')
+    font-weight: $weight
+    font-style: $style
+
+
+// Наименование шрифта
+$font-name: "Jost"
+$font-name-decor: "Dihjauti"
+
+
+@include font-face($font-name, Regular)
+@include font-face($font-name, SemiBold, 600)
+
+// Dihjauti
+@include font-face($font-name-decor, Regular)
+@include font-face($font-name-decor, Bold)
+
+
+
+html
+  font-family: $font-name, "Arial", sans-serif
+  font-weight: 400
+  -webkit-text-size-adjust: none
+  line-height: 1.3
+  font-size: 16px
+
+
+
+// Thin -         100
+// Extra-Light -  200
+// Light -        300
+// Regular -      400
+// Medium -       500
+// Semi-Bold -    600
+// Bold -         700
+// Extra-Bold -   800
+// Black -        900
