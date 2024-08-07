@@ -385,6 +385,17 @@ if (meetings) {
       meetingDesktop.classList.toggle("js-active");
     });
   });
+  var dialogElements = meetings.querySelectorAll("dialog");
+  dialogElements.forEach(function (dialogElement) {
+    dialogElement.addEventListener("click", closeOnBackDropClick);
+    function closeOnBackDropClick(_ref) {
+      var currentTarget = _ref.currentTarget,
+        target = _ref.target;
+      var dialogElement = currentTarget;
+      var isClickedOnBackDrop = target === dialogElement;
+      if (isClickedOnBackDrop) dialogElement.close();
+    }
+  });
 }
 "use strict";
 
