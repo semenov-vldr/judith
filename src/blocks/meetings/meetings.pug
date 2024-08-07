@@ -1,3 +1,4 @@
+// --- Ближайшие встречи ---
 section.meetings#meetings
     .meetings__container.container
 
@@ -7,6 +8,7 @@ section.meetings#meetings
 
         .meetings__list
 
+            // --- Встреча 1 ---
             article.meetings__item
                 .meeting.meeting-desktop
                     .meeting__left
@@ -28,7 +30,7 @@ section.meetings#meetings
                                 li - Фотограф
                                 li - Розыгрыш подарков
                                 li - Завтрак
-                        a.meeting__menu(href="##") Смотреть меню
+                        button.meeting__menu(type="button" onclick="window.meet1.showModal()") Смотреть меню
                         .meeting__footer
                             button.meeting__pay-btn.button.button--primary Оплатить
                             .meeting__total
@@ -40,8 +42,24 @@ section.meetings#meetings
                     button.meeting__btn Подробнее
                     h3.meeting__caption Завтрак в Buro Tsum и экскурсия в закулисье Большого театра
 
+                dialog.meeting__menu-popup#meet1
+                    button.meeting__menu-popup-close(type="button" onclick="window.meet1.close()") &#x2715;
+                    .meeting__menu-popup-body
+                        img(src="./assets/img/meetings/01.png")
+                        .meeting__menu-popup-text
+                            h4 Меню
+                            ul
+                                li Чай
+                                li Кофе
+                                li Игристое вино
+                                li Миндальный круассан
+                                li Булочка с корицей
+                            p P.S. Безглютеновое меню при необходимости
 
 
+
+
+            // --- Встреча 2 ---
             article.meetings__item
                 .meeting.meeting-desktop
                     .meeting__left
@@ -63,7 +81,7 @@ section.meetings#meetings
                                 li - Фотограф
                                 li - Розыгрыш подарков
                                 li - Завтрак
-                        a.meeting__menu(href="##") Смотреть меню
+                        button.meeting__menu(type="button" onclick="window.myDialog.showModal()") Смотреть меню
                         .meeting__footer
                             button.meeting__pay-btn.button.button--primary Оплатить
                             .meeting__total
@@ -75,8 +93,22 @@ section.meetings#meetings
                     button.meeting__btn Подробнее
                     h3.meeting__caption Лекция «Британский панк: от хаоса до самой высокой моды»
 
+                dialog.meeting__menu-popup#meet2
+                    button.meeting__menu-popup-close(type="button" onclick="window.meet2.close()") &#x2715;
+                    .meeting__menu-popup-body
+                        img(src="./assets/img/meetings/02.png")
+                        .meeting__menu-popup-text
+                            h4 Меню
+                            ul
+                                li Чай
+                                li Кофе
+                                li Игристое вино
+                                li Миндальный круассан
+                                li Булочка с корицей
+                            p P.S. Безглютеновое меню при необходимости
 
 
+            // --- Встреча 3 ---
             article.meetings__item
                 .meeting.meeting-desktop
                     .meeting__left
@@ -98,7 +130,7 @@ section.meetings#meetings
                                 li - Фотограф
                                 li - Розыгрыш подарков
                                 li - Завтрак
-                        a.meeting__menu(href="##") Смотреть меню
+                        button.meeting__menu(type="button" onclick="window.myDialog.showModal()") Смотреть меню
                         .meeting__footer
                             button.meeting__pay-btn.button.button--primary Оплатить
                             .meeting__total
@@ -109,3 +141,17 @@ section.meetings#meetings
                     span.meeting__date 13.08 | в 20:00
                     button.meeting__btn Подробнее
                     h3.meeting__caption Арт-вечеринка "Путешествие, Море, пейзажи, цветы"
+
+                dialog.meeting__menu-popup#meet3
+                    button.meeting__menu-popup-close(type="button" onclick="window.meet3.close()") &#x2715;
+                    .meeting__menu-popup-body
+                        img(src="./assets/img/meetings/03.png")
+                        .meeting__menu-popup-text
+                            h4 Меню
+                            ul
+                                li Чай
+                                li Кофе
+                                li Игристое вино
+                                li Миндальный круассан
+                                li Булочка с корицей
+                            p P.S. Безглютеновое меню при необходимости
