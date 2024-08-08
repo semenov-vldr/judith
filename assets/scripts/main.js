@@ -377,6 +377,7 @@ if (heroSliders) {
 
 var meetings = document.querySelector(".meetings");
 if (meetings) {
+  // Появление/скрытие подробной инфы встречи (моб версия)
   var meetingItems = meetings.querySelectorAll(".meetings__item");
   meetingItems.forEach(function (meeting) {
     var meetingDesktop = meeting.querySelector(".meeting-desktop");
@@ -388,12 +389,26 @@ if (meetings) {
   var dialogElements = meetings.querySelectorAll("dialog");
   dialogElements.forEach(function (dialogElement) {
     dialogElement.addEventListener("click", closeOnBackDropClick);
+
+    // Закрытие модалки "Смотреть меню" по клику на backdrop
     function closeOnBackDropClick(_ref) {
       var currentTarget = _ref.currentTarget,
         target = _ref.target;
       var dialogElement = currentTarget;
       var isClickedOnBackDrop = target === dialogElement;
       if (isClickedOnBackDrop) dialogElement.close();
+    }
+
+    // Swiper
+    var meetingSlider = dialogElement.querySelector(".meeting__menu-popup-slider");
+    if (meetingSlider) {
+      var swiper = new Swiper(meetingSlider, {
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev"
+        },
+        loop: true
+      });
     }
   });
 }
@@ -402,7 +417,7 @@ if (meetings) {
 var pastMeetings = document.querySelector(".past-meetings");
 if (pastMeetings) {
   var pastMeetingsSlider = document.querySelector(".past-meetings__slider");
-  var swiper = new Swiper(pastMeetingsSlider, {
+  var pastMeetingsSwiperOptions = {
     watchOverflow: true,
     slidesPerView: "auto",
     freeMode: true,
@@ -414,5 +429,20 @@ if (pastMeetings) {
         spaceBetween: 16
       }
     }
+  };
+  var pastMeetingsSwiper = new Swiper(pastMeetingsSlider, pastMeetingsSwiperOptions);
+
+  // Создание галереи фотоотчета
+  Fancybox.bind('[data-fancybox]', {});
+
+  // Автоматическое присваивания дата-атрибутов для отдельных галерей для каждой карточки
+  var pastMeetingItems = pastMeetings.querySelectorAll(".past-meeting");
+  pastMeetingItems.forEach(function (pastMeetingItem, pastMeetingIndex) {
+    var dataFancybox = pastMeetingItem.querySelector(".past-meeting__btn");
+    dataFancybox.dataset.fancybox = pastMeetingIndex;
+    var pastMeetingGalleryItems = pastMeetingItem.querySelectorAll(".past-meeting__gallery a");
+    pastMeetingGalleryItems.forEach(function (pastMeetingGalleryItem) {
+      pastMeetingGalleryItem.dataset.fancybox = pastMeetingIndex;
+    });
   });
 }
