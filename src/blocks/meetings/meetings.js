@@ -2,6 +2,7 @@ const meetings = document.querySelector(".meetings");
 
 if (meetings) {
 
+  // Появление/скрытие подробной инфы встречи (моб версия)
   const meetingItems = meetings.querySelectorAll(".meetings__item");
 
   meetingItems.forEach(meeting => {
@@ -15,18 +16,34 @@ if (meetings) {
   });
 
 
+
   const dialogElements = meetings.querySelectorAll("dialog");
 
   dialogElements.forEach(dialogElement => {
     dialogElement.addEventListener("click", closeOnBackDropClick);
 
+    // Закрытие модалки "Смотреть меню" по клику на backdrop
     function closeOnBackDropClick({ currentTarget, target }) {
       const dialogElement = currentTarget;
       const isClickedOnBackDrop = target === dialogElement;
       if (isClickedOnBackDrop) dialogElement.close();
     }
-  })
 
+    // Swiper
+    const meetingSlider = dialogElement.querySelector(".meeting__menu-popup-slider");
+    if (meetingSlider) {
+
+      const swiper = new Swiper(meetingSlider, {
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+        loop: true,
+      });
+    }
+
+
+  });
 
 
 }
