@@ -1,48 +1,5 @@
 "use strict";
 
-// Отправка данных формы в Телеграм
-var TOKEN = "6388509099:AAFIQyVlZ4MapEiXhH2vQJh8CyZFgFoJ_mA";
-var CHAT_ID = "-1002008090284";
-var URL_API = "https://api.telegram.org/bot".concat(TOKEN, "/sendMessage");
-var forms = document.querySelectorAll("form.form");
-if (forms) {
-  forms.forEach(function (form) {
-    return form.addEventListener("submit", sendMessageTelegram);
-  });
-}
-function sendMessageTelegram(evt) {
-  evt.preventDefault();
-  var typeConnection = this.querySelector(".form__connection-fieldset input[type='radio']:checked");
-  var successFormMessage = this.querySelector('.form__message--success');
-  var errorFormMessage = this.querySelector('.form__message--error');
-  function formSuccess() {
-    successFormMessage.classList.add('js-message-active');
-  }
-  function formError() {
-    errorFormMessage.classList.add('js-message-active');
-  }
-  var message = "<b>\u0417\u0430\u044F\u0432\u043A\u0430 \u0441 \u0441\u0430\u0439\u0442\u0430 ***:</b>\n";
-  message += "<b>\u0418\u043C\u044F:</b> ".concat(this.name.value, "\n");
-  message += "<b>\u0422\u0435\u043B\u0435\u0444\u043E\u043D:</b> ".concat(this.phone.value, "\n");
-  message += "<b>\u0421\u043F\u043E\u0441\u043E\u0431 \u0441\u0432\u044F\u0437\u0438:</b> ".concat(typeConnection.value, "\n");
-  axios.post(URL_API, {
-    chat_id: CHAT_ID,
-    parse_mode: "html",
-    text: message
-  }).then(function () {
-    console.log("Заявка отправлена");
-    //formSuccess();
-  })["catch"](function (err) {
-    console.warn(err);
-    //formError();
-  })["finally"](function () {
-    console.log("Конец");
-  });
-  this.reset();
-}
-;
-"use strict";
-
 var html = document.querySelector('html');
 var classBlockScroll = "js-no-scroll";
 function blockScrollBody() {
@@ -65,6 +22,16 @@ function toggleBlockScrollBody() {
   }
 }
 ;
+"use strict";
+
+// Закрытие dialog по клику на backdrop
+function closeOnBackDropClick(_ref) {
+  var currentTarget = _ref.currentTarget,
+    target = _ref.target;
+  var dialogElement = currentTarget;
+  var isClickedOnBackDrop = target === dialogElement;
+  if (isClickedOnBackDrop) dialogElement.close();
+}
 "use strict";
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
@@ -262,6 +229,10 @@ function useDynamicAdapt() {
   }
 }
 "use strict";
+
+AOS.init({
+  once: true // Срабатывание только один раз в поле зрения
+});
 "use strict";
 
 var phoneInputs = document.querySelectorAll('input[data-tel-input]');
@@ -334,6 +305,37 @@ phoneInputs.forEach(function (input) {
 });
 "use strict";
 
+var formPopup = document.querySelector(".form-popup");
+if (formPopup) {
+  formPopup.addEventListener("click", closeOnBackDropClick);
+  var meetingsItems = document.querySelectorAll(".meetings .meetings__item");
+  meetingsItems.forEach(function (meetingsItem) {
+    var meetingCaption = meetingsItem.querySelector(".meeting__caption").textContent;
+    var meetingDate = meetingsItem.querySelector(".meeting-mobile .meeting__date").innerText;
+    var meetingTotal = meetingsItem.querySelector(".meeting__total span:nth-child(2)").textContent;
+
+    // Заполнение Заголовка, даты/времени и цены мероприятия в форме
+    var popupFormOpenBtn = meetingsItem.querySelector(".meeting__pay-btn");
+    var formCaption = formPopup.querySelector(".form-popup__caption");
+    var formMeetingDate = formPopup.querySelector(".form-popup__date");
+    var formMeetingTotal = formPopup.querySelector(".form-popup__price");
+    popupFormOpenBtn.addEventListener("click", function () {
+      formCaption.textContent = meetingCaption;
+      formMeetingDate.textContent = "\u0414\u0430\u0442\u0430 \u0438 \u0432\u0440\u0435\u043C\u044F: ".concat(meetingDate);
+      formMeetingTotal.textContent = meetingTotal;
+    });
+  });
+
+  // Сброс формы при закрытии
+  formPopup.addEventListener("click", function () {
+    if (!formPopup.open) {
+      var form = formPopup.querySelector(".form-popup__form");
+      form.reset();
+    }
+  });
+}
+"use strict";
+
 var header = document.querySelector(".header");
 if (header) {
   var closeNavScroll = function closeNavScroll() {
@@ -389,15 +391,6 @@ if (meetings) {
   var dialogElements = meetings.querySelectorAll("dialog");
   dialogElements.forEach(function (dialogElement) {
     dialogElement.addEventListener("click", closeOnBackDropClick);
-
-    // Закрытие модалки "Смотреть меню" по клику на backdrop
-    function closeOnBackDropClick(_ref) {
-      var currentTarget = _ref.currentTarget,
-        target = _ref.target;
-      var dialogElement = currentTarget;
-      var isClickedOnBackDrop = target === dialogElement;
-      if (isClickedOnBackDrop) dialogElement.close();
-    }
 
     // Swiper
     var meetingSlider = dialogElement.querySelector(".meeting__menu-popup-slider");
