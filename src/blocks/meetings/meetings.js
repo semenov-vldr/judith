@@ -22,12 +22,6 @@ if (meetings) {
   dialogElements.forEach(dialogElement => {
     dialogElement.addEventListener("click", closeOnBackDropClick);
 
-    // Закрытие модалки "Смотреть меню" по клику на backdrop
-    function closeOnBackDropClick({ currentTarget, target }) {
-      const dialogElement = currentTarget;
-      const isClickedOnBackDrop = target === dialogElement;
-      if (isClickedOnBackDrop) dialogElement.close();
-    }
 
     // Swiper
     const meetingSlider = dialogElement.querySelector(".meeting__menu-popup-slider");

@@ -1,12 +1,12 @@
 section.hero
     .hero__container.container
         .hero__header
-            h1.hero__title Юдифь
-            p.hero__subtitle Арт-проект для <br> настоящих ценителей <br> искусства
+            h1.hero__title(data-aos="fade-down" data-aos-delay="500") Юдифь
+            p.hero__subtitle(data-aos="fade-up" data-aos-delay="1000") Арт-проект для <br> настоящих ценителей <br> искусства
 
         .hero__sliders
 
-            .hero__slider.hero__slider--1.swiper
+            .hero__slider.hero__slider--1.swiper(data-aos="fade-up")
                 .swiper-wrapper
                     .swiper-slide
                         img(src="./assets/img/hero/01.jpg")
@@ -15,7 +15,7 @@ section.hero
                     .swiper-slide
                         img(src="./assets/img/hero/03.jpg")
 
-            .hero__slider.hero__slider--2.swiper
+            .hero__slider.hero__slider--2.swiper(data-aos="fade-up" data-aos-delay="100")
                 .swiper-wrapper
                     .swiper-slide
                         img(src="./assets/img/hero/02.jpg")
@@ -25,7 +25,7 @@ section.hero
                         img(src="./assets/img/hero/01.jpg")
 
 
-            .hero__slider.hero__slider--3.swiper
+            .hero__slider.hero__slider--3.swiper(data-aos="fade-up" data-aos-delay="300")
                 .swiper-wrapper
                     .swiper-slide
                         img(src="./assets/img/hero/03.jpg")
@@ -36,5 +36,5 @@ section.hero
 
 
             a.hero__link(href="#meetings")
-                span.hero__link-text Ближайшие встречи
+                span.hero__link-text(data-aos="fade-up" data-aos-delay="1100") Ближайшие встречи
                 span.hero__link-circle

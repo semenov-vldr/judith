@@ -32,7 +32,7 @@ section.meetings#meetings
                                 li - Завтрак
                         button.meeting__menu(type="button" onclick="window.meet1.showModal()") Смотреть меню
                         .meeting__footer
-                            button.meeting__pay-btn.button.button--primary Оплатить
+                            button.meeting__pay-btn.button.button--primary(type="button" onclick="window.form.showModal()") Оплатить
                             .meeting__total
                                 span Стоимость
                                 span 10 000 руб.
@@ -95,10 +95,10 @@ section.meetings#meetings
                                 li - Завтрак
                         button.meeting__menu(type="button" onclick="window.meet2.showModal()") Смотреть меню
                         .meeting__footer
-                            button.meeting__pay-btn.button.button--primary Оплатить
+                            button.meeting__pay-btn.button.button--primary(type="button" onclick="window.form.showModal()") Оплатить
                             .meeting__total
                                 span Стоимость
-                                span 10 000 руб.
+                                span 20 000 руб.
 
                 .meeting.meeting-mobile
                     span.meeting__date 21.06 | в 11:30
@@ -156,10 +156,10 @@ section.meetings#meetings
                                 li - Завтрак
                         button.meeting__menu(type="button" onclick="window.meet3.showModal()") Смотреть меню
                         .meeting__footer
-                            button.meeting__pay-btn.button.button--primary Оплатить
+                            button.meeting__pay-btn.button.button--primary(type="button" onclick="window.form.showModal()") Оплатить
                             .meeting__total
                                 span Стоимость
-                                span 10 000 руб.
+                                span 30 000 руб.
 
                 .meeting.meeting-mobile
                     span.meeting__date 13.08 | в 20:00
@@ -191,3 +191,7 @@ section.meetings#meetings
                                 li Миндальный круассан
                                 li Булочка с корицей
                             p P.S. Безглютеновое меню при необходимости
+
+
+
+    include ../form-popup/form-popup

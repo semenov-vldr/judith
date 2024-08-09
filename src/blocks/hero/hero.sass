@@ -36,14 +36,18 @@
     color: #404040
     user-select: none
 
+
   &__subtitle
     @include fontSize(20, 24)
     align-self: flex-end
-    transform: translateX(50%)
+    margin-right: -100px
     user-select: none
     @include tablet
-      transform: initial
       align-self: flex-start
+      margin: 0
+
+
+
 
   &__sliders
     position: absolute
@@ -71,14 +75,25 @@
 
 
   &__slider--1
-    transform: translateY(50%)
-    opacity: 0.2
+    transform: translateY(100%)
+    opacity: 0
+    &.aos-init[data-aos][data-aos].aos-animate
+      transform: translateY(50%)
+      opacity: 0.2
   &__slider--2
-    transform: translateY(25%)
-    opacity: 0.5
-
+    transform: translateY(75%)
+    opacity: 0
+    &.aos-init[data-aos][data-aos].aos-animate
+      transform: translateY(25%)
+      opacity: 0.5
   &__slider--3
+    transform: translateY(25%)
     opacity: 0.2
+    &.aos-init[data-aos][data-aos].aos-animate
+      transform: initial
+      opacity: 0.5
+
+
 
   img
     height: 100%
