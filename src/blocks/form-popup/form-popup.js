@@ -1,3 +1,4 @@
+// Модальное окно с Формой
 const formPopup = document.querySelector(".form-popup");
 
 if (formPopup) {
@@ -34,6 +35,7 @@ if (formPopup) {
       form.reset();
     }
   });
-
 }
+
+// ---------------------------------------------------------
 

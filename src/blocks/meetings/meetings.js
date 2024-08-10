@@ -1,3 +1,4 @@
+// --- Ближайшие встречи ---
 const meetings = document.querySelector(".meetings");
 
 if (meetings) {
@@ -15,13 +16,10 @@ if (meetings) {
     });
   });
 
-
-
   const dialogElements = meetings.querySelectorAll("dialog");
 
   dialogElements.forEach(dialogElement => {
     dialogElement.addEventListener("click", closeOnBackDropClick);
-
 
     // Swiper
     const meetingSlider = dialogElement.querySelector(".meeting__menu-popup-slider");
@@ -35,9 +33,7 @@ if (meetings) {
         loop: true,
       });
     }
-
-
   });
-
-
 }
+
+// ---------------------------------------------------------

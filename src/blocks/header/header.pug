@@ -1,3 +1,4 @@
+// --- Хедер ---
 header.header
     .container.header__container
 
@@ -17,13 +18,13 @@ header.header
                 li.header-nav__item
                     a.header-nav__link(href='#footer') Контакты
 
-
+        // Бургер
         button(type="button").header__burger
             span
             span
             span
 
-
+        // Фиксированное меню
         nav.header__nav-scroll.nav-scroll
 
             button.nav-scroll__close &#x2715;
@@ -47,5 +48,5 @@ header.header
                 li
                     a(href="##" target="_blank")
                         img(src="./assets/img/icons/social/email.svg")
-
+        // Подложка при открытом меню
         .bg-overlay
