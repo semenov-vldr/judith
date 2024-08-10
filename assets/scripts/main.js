@@ -235,76 +235,7 @@ AOS.init({
 });
 "use strict";
 
-var phoneInputs = document.querySelectorAll('input[data-tel-input]');
-var getInputNumbersValue = function getInputNumbersValue(input) {
-  return input.value.replace(/\D/g, "");
-};
-var onPhoneInput = function onPhoneInput(evt) {
-  var input = evt.target;
-  var inputNumbersValue = getInputNumbersValue(input);
-  var formattedInputValue = "";
-  var selectionStart = input.selectionStart;
-  if (!inputNumbersValue) input.value = "";
-  if (input.value.length !== selectionStart) {
-    if (evt.data && /\D/g.test(evt.data)) {
-      input.value = formattedInputValue;
-    }
-    return;
-  }
-  if (["7", "8", "9"].indexOf(inputNumbersValue[0]) > -1) {
-    // Российские номера
-    if (inputNumbersValue[0] === "9") inputNumbersValue = "7" + inputNumbersValue;
-    var firstSymbols = inputNumbersValue[0] === "8" ? "8" : "+7";
-    formattedInputValue = firstSymbols + " ";
-    if (inputNumbersValue[0] === "8") {
-      //phoneInputs[0].setAttribute("pattern", ".{17,}");
-      console.log(phoneInputs[0].getAttribute("pattern"));
-    }
-    if (inputNumbersValue.length > 1) {
-      formattedInputValue += "(" + inputNumbersValue.slice(1, 4);
-    }
-    if (inputNumbersValue.length >= 5) {
-      formattedInputValue += ") " + inputNumbersValue.slice(4, 7);
-    }
-    if (inputNumbersValue.length >= 8) {
-      formattedInputValue += "-" + inputNumbersValue.slice(7, 9);
-    }
-    if (inputNumbersValue.length >= 10) {
-      formattedInputValue += "-" + inputNumbersValue.slice(9, 11);
-    }
-
-    // Не российские номера
-  } else formattedInputValue = "+" + inputNumbersValue;
-  input.value = formattedInputValue;
-};
-
-// Стирание первого символа
-var onPhoneKeyDown = function onPhoneKeyDown(evt) {
-  var input = evt.target;
-  if (evt.keyCode === 8 && getInputNumbersValue(input).length === 1) {
-    input.value = "";
-  }
-};
-
-// Вставка цифр в любое место
-var onPhonePaste = function onPhonePaste(evt) {
-  var pasted = evt.clipboardData || window.clipboardData;
-  var input = evt.target;
-  var inputNumbersValue = getInputNumbersValue(input);
-  if (pasted) {
-    var pastedText = pasted.getData("Text");
-    if (/\D/g.test(pastedText)) {
-      input.value = inputNumbersValue;
-    }
-  }
-};
-phoneInputs.forEach(function (input) {
-  input.addEventListener('input', onPhoneInput);
-  input.addEventListener("keydown", onPhoneKeyDown);
-  input.addEventListener("paste", onPhonePaste);
-});
-"use strict";
-
+// Модальное окно с Формой
 var formPopup = document.querySelector(".form-popup");
 if (formPopup) {
   formPopup.addEventListener("click", closeOnBackDropClick);
@@ -334,6 +265,8 @@ if (formPopup) {
     }
   });
 }
+
+// ---------------------------------------------------------
 "use strict";
 
 var header = document.querySelector(".header");
@@ -377,6 +310,7 @@ if (heroSliders) {
 }
 "use strict";
 
+// --- Ближайшие встречи ---
 var meetings = document.querySelector(".meetings");
 if (meetings) {
   // Появление/скрытие подробной инфы встречи (моб версия)
@@ -405,8 +339,11 @@ if (meetings) {
     }
   });
 }
+
+// ---------------------------------------------------------
 "use strict";
 
+// --- Прошедшие события ---
 var pastMeetings = document.querySelector(".past-meetings");
 if (pastMeetings) {
   var pastMeetingsSlider = document.querySelector(".past-meetings__slider");
@@ -427,15 +364,23 @@ if (pastMeetings) {
 
   // Создание галереи фотоотчета
   Fancybox.bind('[data-fancybox]', {});
-
-  // Автоматическое присваивания дата-атрибутов для отдельных галерей для каждой карточки
   var pastMeetingItems = pastMeetings.querySelectorAll(".past-meeting");
-  pastMeetingItems.forEach(function (pastMeetingItem, pastMeetingIndex) {
-    var dataFancybox = pastMeetingItem.querySelector(".past-meeting__btn");
-    dataFancybox.dataset.fancybox = pastMeetingIndex;
-    var pastMeetingGalleryItems = pastMeetingItem.querySelectorAll(".past-meeting__gallery a");
-    pastMeetingGalleryItems.forEach(function (pastMeetingGalleryItem) {
-      pastMeetingGalleryItem.dataset.fancybox = pastMeetingIndex;
+  pastMeetingItems.forEach(function (pastMeetingItem) {
+    // Кнопка "Фотоотчет"
+    var openGalleryBtn = pastMeetingItem.querySelector(".past-meeting__btn");
+    // Фотогалерея карточки
+    var galleryList = Array.from(pastMeetingItem.querySelectorAll(".past-meeting__gallery img"));
+
+    // Добавление фотографий из галереи в Fancybox
+    var imgSet = new Set(galleryList.map(function (galleryItem) {
+      return {
+        src: galleryItem.src
+      };
+    }));
+    openGalleryBtn.addEventListener("click", function () {
+      return Fancybox.show(imgSet);
     });
   });
 }
+
+// ---------------------------------------------------------
