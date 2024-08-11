@@ -303,8 +303,8 @@ if (heroSliders) {
   var heroSliderList = document.querySelectorAll(".hero__slider");
   heroSliderList.forEach(function (heroSlider) {
     var swiper = new Swiper(heroSlider, {
-      loop: true
-      // autoplay: true,
+      loop: true,
+      autoplay: true
     });
   });
 }
