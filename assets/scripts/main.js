@@ -317,8 +317,8 @@ if (meetings) {
   var meetingItems = meetings.querySelectorAll(".meetings__item");
   meetingItems.forEach(function (meeting) {
     var meetingDesktop = meeting.querySelector(".meeting-desktop");
-    var meetingMoreBtn = meeting.querySelector(".meeting__btn");
-    meetingMoreBtn.addEventListener("click", function () {
+    var meetingMobile = meeting.querySelector(".meeting.meeting-mobile");
+    meetingMobile.addEventListener("click", function () {
       meetingDesktop.classList.toggle("js-active");
     });
   });
