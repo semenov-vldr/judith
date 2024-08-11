@@ -9,9 +9,9 @@ if (meetings) {
   meetingItems.forEach(meeting => {
 
     const meetingDesktop = meeting.querySelector(".meeting-desktop");
-    const meetingMoreBtn = meeting.querySelector(".meeting__btn");
+    const meetingMobile = meeting.querySelector(".meeting.meeting-mobile");
 
-    meetingMoreBtn.addEventListener("click", () => {
+    meetingMobile.addEventListener("click", () => {
       meetingDesktop.classList.toggle("js-active");
     });
   });
