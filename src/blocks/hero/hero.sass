@@ -1,9 +1,11 @@
 /* --- Главный блок --- */
 .hero
+  min-height: 1000px
   position: relative
-  min-height: 800px
   padding-bottom: 100px
   @extend .flex-center
+  @media (max-width: 1800px)
+    min-height: 800px
   @include tablet
     min-height: 600px
     transform: translateY(-70px)

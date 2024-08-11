@@ -8,7 +8,7 @@ if (heroSliders) {
 
     const swiper = new Swiper(heroSlider, {
       loop: true,
-      // autoplay: true,
+      autoplay: true,
     });
 
   });
